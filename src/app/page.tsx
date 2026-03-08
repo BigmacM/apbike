@@ -32,11 +32,6 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/hero/hero-bg.jpg"
-          onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src =
-              "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85";
-          }}
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -133,7 +128,7 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
           >
             {[
               { icon: <MapPin size={13} />, label: "Second Road, Soi 8–9" },
-              { icon: <Clock size={13} />, label: "Open 10:00 – 18:59" },
+              { icon: <Clock size={13} />, label: "Open 10:00 – 19:00" },
               { icon: <Shield size={13} />, label: "No Passport Required" },
             ].map((pill) => (
               <span
@@ -416,7 +411,7 @@ function LocationSection({ onBookNow }: { onBookNow: () => void }) {
                 <InfoRow
                   icon={<Clock size={18} className="text-ocean" />}
                   label="Business Hours"
-                  value="10:00 AM – 6:59 PM (Every day)"
+                  value="10:00 AM – 7:00 PM (Every day)"
                 />
                 <InfoRow
                   icon={<Phone size={18} className="text-ocean" />}

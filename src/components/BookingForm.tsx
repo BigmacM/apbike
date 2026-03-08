@@ -63,14 +63,14 @@ const bookingSchema = z
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["pickupTime"],
-        message: "Enjoy your evening! We open at 10:00 AM and close at 6:59 PM 🌙",
+        message: "Enjoy your evening! We open at 10:00 AM and close at 7:00 PM 🌙",
       });
     }
     if (data.returnTime && !isWithinBusinessHours(data.returnTime)) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["returnTime"],
-        message: "Return must be before 6:59 PM. We close at 18:59 🌴",
+        message: "Return must be before 7:00 PM. We close at 19:00 🌴",
       });
     }
     // Return must be after pickup
@@ -225,7 +225,7 @@ export default function BookingForm({ bike, isOpen, onClose }: BookingFormProps)
         <div className="flex items-start gap-2 bg-sunset/10 border border-sunset/20 rounded-xl px-3 py-2.5 mt-2">
           <Moon size={15} className="text-sunset mt-0.5 shrink-0" />
           <p className="text-xs text-sunset font-medium">
-            Enjoy your evening! We open at 10:00 AM and close at 6:59 PM 🌙
+            Enjoy your evening! We open at 10:00 AM and close at 7:00 PM 🌙
           </p>
         </div>
       );
@@ -359,7 +359,7 @@ export default function BookingForm({ bike, isOpen, onClose }: BookingFormProps)
                       Rental Period
                       <span className="ml-auto text-xs font-normal text-gray-400 flex items-center gap-1">
                         <Clock size={12} />
-                        Open 10:00 – 18:59
+                        Open 10:00 – 19:00
                       </span>
                     </legend>
 
@@ -384,7 +384,7 @@ export default function BookingForm({ bike, isOpen, onClose }: BookingFormProps)
                           type="time"
                           {...register("pickupTime")}
                           min="10:00"
-                          max="18:59"
+                          max="19:00"
                           className={inputClass(!!errors.pickupTime)}
                         />
                       </FormField>
@@ -412,7 +412,7 @@ export default function BookingForm({ bike, isOpen, onClose }: BookingFormProps)
                           type="time"
                           {...register("returnTime")}
                           min="10:00"
-                          max="18:59"
+                          max="19:00"
                           className={inputClass(!!errors.returnTime)}
                         />
                       </FormField>
@@ -648,7 +648,7 @@ function SuccessScreen({ bike, onClose }: { bike: Bike | null; onClose: () => vo
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600">
           <span>🕙</span>
-          <span>Open 10:00 AM – 6:59 PM daily</span>
+          <span>Open 10:00 AM – 7:00 PM daily</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600">
           <span>💳</span>

@@ -91,7 +91,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="lg:col-span-3 rounded-3xl overflow-hidden shadow-card"
+              className="lg:col-span-3 rounded-3xl overflow-hidden shadow-card min-h-[400px]"
             >
               <MapCard minHeight={400} />
             </motion.div>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                   <InfoRow
                     icon={<Clock size={20} className="text-ocean" />}
                     label="Business Hours"
-                    value="10:00 AM – 6:59 PM"
+                    value="10:00 AM – 7:00 PM"
                     sub="Every day of the week"
                   />
                   <InfoRow

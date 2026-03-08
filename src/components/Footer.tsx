@@ -51,7 +51,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <Clock size={14} className="text-ocean" />
-                <span>Every day: 10:00 AM – 6:59 PM</span>
+                <span>Every day: 10:00 AM – 7:00 PM</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin size={14} className="text-ocean" />

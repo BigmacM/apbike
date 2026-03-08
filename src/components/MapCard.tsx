@@ -24,8 +24,7 @@ export default function MapCard({ minHeight = 320 }: { minHeight?: number }) {
         title="AP Bike Center Location"
         src={EMBED_SRC}
         width="100%"
-        height="100%"
-        style={{ border: 0, minHeight }}
+        style={{ border: 0, minHeight, height: "100%" }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
@@ -35,7 +34,7 @@ export default function MapCard({ minHeight = 320 }: { minHeight?: number }) {
 
   return (
     <div
-      className="relative w-full flex flex-col items-center justify-center text-center p-8 cursor-pointer group"
+      className="relative w-full h-full flex flex-col items-center justify-center text-center p-8 cursor-pointer group"
       style={{ minHeight }}
       onClick={() => setLoaded(true)}
     >

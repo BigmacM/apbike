@@ -100,7 +100,7 @@ const localBusinessSchema = {
         "Sunday",
       ],
       opens: "10:00",
-      closes: "18:59",
+      closes: "19:00",
     },
   ],
   currenciesAccepted: "THB",
@@ -208,7 +208,7 @@ const faqSchema = {
       name: "Where is AP Bike Center located in Pattaya?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AP Bike Center is on Second Road, Pattaya City, between Soi 8 and Soi 9. Open every day from 10:00 AM to 6:59 PM.",
+        text: "AP Bike Center is on Second Road, Pattaya City, between Soi 8 and Soi 9. Open every day from 10:00 AM to 7:00 PM.",
       },
     },
   ],
