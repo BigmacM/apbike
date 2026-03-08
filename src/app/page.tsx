@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   MapPin,
@@ -11,130 +11,12 @@ import {
   Headphones,
   Wrench,
   ChevronDown,
-  Menu,
-  X,
   Sun,
 } from "lucide-react";
 import BikeGrid, { type Bike } from "@/components/BikeGrid";
 import BookingForm from "@/components/BookingForm";
-
-// ─── Nav ──────────────────────────────────────────────────────────────────────
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  const navLinks = [
-    { label: "Fleet", href: "#fleet" },
-    { label: "Why Us", href: "#why-us" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Location", href: "#location" },
-  ];
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-soft"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-ocean flex items-center justify-center text-white font-display font-black text-sm shadow-glow">
-              AP
-            </div>
-            <div className="leading-none">
-              <p
-                className={`font-display font-bold text-base transition-colors ${
-                  scrolled ? "text-gray-900" : "text-white"
-                }`}
-              >
-                AP Bike Center
-              </p>
-              <p
-                className={`text-xs transition-colors ${
-                  scrolled ? "text-ocean" : "text-white/80"
-                }`}
-              >
-                All Pattaya
-              </p>
-            </div>
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-                  scrolled
-                    ? "text-gray-600 hover:text-ocean hover:bg-ocean/10"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA */}
-          <div className="flex items-center gap-3">
-            <a
-              href="#fleet"
-              className="hidden sm:inline-flex items-center gap-2 bg-gradient-ocean text-white font-semibold text-sm px-5 py-2.5 rounded-xl hover:opacity-90 active:scale-[0.97] transition-all shadow-glow"
-            >
-              Book a Bike
-              <span>🏍️</span>
-            </a>
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className={`md:hidden p-2 rounded-xl transition-colors ${
-                scrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/10"
-              }`}
-            >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-1"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-sand hover:text-ocean transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#fleet"
-            onClick={() => setMobileOpen(false)}
-            className="block mt-3 text-center bg-gradient-ocean text-white font-semibold py-3 px-6 rounded-xl"
-          >
-            Book a Bike 🏍️
-          </a>
-        </motion.div>
-      )}
-    </header>
-  );
-}
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function HeroSection({ onBookNow }: { onBookNow: () => void }) {
@@ -151,7 +33,7 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
             backgroundImage: `url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85')`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-br from-ocean/20 via-transparent to-sunset/20" />
       </motion.div>
 
@@ -178,8 +60,9 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center gap-2 glass text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
-              <Sun size={14} className="text-sunset animate-float" />
+            {/* Badge — white background ensures readable contrast on any hero image */}
+            <span className="inline-flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-4 py-2 rounded-full mb-6 shadow-md">
+              <Sun size={14} className="text-sunset" />
               Pattaya&apos;s Most Trusted Bike Rental
               <span className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -206,11 +89,11 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-white/85 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg"
+            className="text-white/90 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg"
           >
-            Premium motorbike rentals with{" "}
-            <span className="font-semibold text-white">no passport deposit</span>{" "}
-            — just copy &amp; cash. Free helmets, 24h roadside support.
+            Bring a copy of your ID and a cash deposit —{" "}
+            <span className="font-semibold text-white">your passport stays with you</span>.
+            Every rental includes a free helmet and 24-hour roadside assistance.
           </motion.p>
 
           <motion.div
@@ -227,8 +110,8 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
               Book Your Ride Now
             </button>
             <a
-              href="#fleet"
-              className="inline-flex items-center justify-center gap-2 glass text-white font-semibold text-base px-7 py-4 rounded-2xl hover:bg-white/20 transition-all"
+              href="/bikes"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/80 text-white font-semibold text-base px-7 py-4 rounded-2xl hover:bg-white/10 transition-all"
             >
               View All Bikes
               <ChevronDown size={18} />
@@ -248,7 +131,7 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
             ].map((pill) => (
               <span
                 key={pill.label}
-                className="glass-dark text-white/90 text-xs font-medium px-3.5 py-2 rounded-full flex items-center gap-1.5"
+                className="glass-dark text-white text-xs font-medium px-3.5 py-2 rounded-full flex items-center gap-1.5"
               >
                 {pill.icon}
                 {pill.label}
@@ -264,13 +147,13 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
         transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-white/60 text-xs font-medium">Scroll to explore</span>
+        <span className="text-white/70 text-xs font-medium">Scroll to explore</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-9 rounded-full border-2 border-white/40 flex justify-center pt-1.5"
+          className="w-6 h-9 rounded-full border-2 border-white/50 flex justify-center pt-1.5"
         >
-          <div className="w-1 h-2.5 bg-white/70 rounded-full" />
+          <div className="w-1 h-2.5 bg-white/80 rounded-full" />
         </motion.div>
       </motion.div>
     </section>
@@ -283,7 +166,7 @@ function UspBar() {
     {
       icon: <Shield size={22} className="text-ocean" />,
       title: "No Passport Deposit",
-      desc: "Copy & Cash only — no stress, no risk",
+      desc: "ID copy & cash only — your passport stays with you",
     },
     {
       icon: <span className="text-2xl">⛑️</span>,
@@ -293,7 +176,7 @@ function UspBar() {
     {
       icon: <Headphones size={22} className="text-sunset" />,
       title: "24h Roadside Assistance",
-      desc: "We&apos;re with you wherever you ride",
+      desc: "We're with you wherever you ride",
     },
     {
       icon: <Wrench size={22} className="text-palm" />,
@@ -470,7 +353,7 @@ function WhyUs() {
             className="grid grid-cols-2 gap-4"
           >
             {[
-              { value: "0%", label: "Passport Required", sub: "Just a copy & cash" },
+              { value: "NO", label: "Passport Deposit", sub: "Just an ID copy & cash" },
               { value: "24h", label: "Roadside Support", sub: "365 days a year" },
               { value: "100+", label: "Happy Tourists", sub: "Last month alone" },
               { value: "5★", label: "Average Rating", sub: "On Google Reviews" },
@@ -568,7 +451,7 @@ function LocationSection({ onBookNow }: { onBookNow: () => void }) {
               <ul className="text-sm text-gray-600 space-y-1">
                 <li className="flex items-center gap-2">✅ Copy of your passport/ID</li>
                 <li className="flex items-center gap-2">✅ Cash deposit (refundable)</li>
-                <li className="flex items-center gap-2">❌ No passport required as deposit</li>
+                <li className="flex items-center gap-2">❌ No passport held as deposit</li>
               </ul>
             </div>
 
@@ -608,88 +491,70 @@ function InfoRow({
   );
 }
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
-function Footer() {
+// ─── FAQ Section ──────────────────────────────────────────────────────────────
+function FaqSection() {
+  const faqs = [
+    {
+      q: "Do I need to leave my passport as a deposit?",
+      a: "No — we never hold your passport. We only ask for a copy of your passport or ID plus a refundable cash deposit.",
+    },
+    {
+      q: "What is included in the rental price?",
+      a: "Every rental includes a free helmet. Pricing is per day with no hidden fees. Optional add-ons like a guaranteed model are available at checkout.",
+    },
+    {
+      q: "What happens if the bike breaks down?",
+      a: "We offer 24-hour roadside assistance every day of the year. Contact us via LINE and we will come to you.",
+    },
+    {
+      q: "What bikes do you have available?",
+      a: "We offer Honda Click 125i, Honda Scoopy, Honda PCX 160, Yamaha NMAX, Honda Forza 350, and Yamaha XMAX. Prices start from ฿220/day.",
+    },
+    {
+      q: "How do I confirm my booking?",
+      a: "Fill in the booking form on our website and we will confirm via LINE. The whole process takes under 5 minutes.",
+    },
+  ];
+
   return (
-    <footer className="bg-gray-950 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-10">
-          <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-ocean flex items-center justify-center font-display font-black text-sm">
-                AP
-              </div>
-              <div>
-                <p className="font-display font-bold text-white">AP Bike Center</p>
-                <p className="text-xs text-ocean">All Pattaya</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Premium motorbike rentals in Pattaya. Honest, safe, and hassle-free — since day one.
-            </p>
-          </div>
+    <section className="py-20 bg-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="inline-flex items-center gap-2 bg-ocean/10 text-ocean font-semibold text-sm px-4 py-2 rounded-full mb-4">
+            ❓ Common Questions
+          </span>
+          <h2 className="font-display text-4xl font-bold text-gray-900 mb-4">
+            Frequently Asked Questions
+          </h2>
+        </motion.div>
 
-          <div>
-            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wide">
-              Quick Links
-            </h4>
-            <div className="space-y-2">
-              {[
-                { href: "#fleet", label: "Our Fleet" },
-                { href: "#how-it-works", label: "How It Works" },
-                { href: "#why-us", label: "Why Choose Us" },
-                { href: "#location", label: "Location" },
-              ].map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="block text-gray-400 hover:text-ocean text-sm transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wide">
-              Business Hours
-            </h4>
-            <div className="space-y-2 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <Clock size={14} className="text-ocean" />
-                <span>Every day: 10:00 AM – 6:59 PM</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin size={14} className="text-ocean" />
-                <span>Second Road, Soi 8–9, Pattaya</span>
-              </div>
-            </div>
-            <div className="mt-6">
-              <p className="text-xs text-gray-500 mb-2">Booking confirmation via</p>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">
-                  L
-                </div>
-                <span className="text-sm font-semibold text-gray-300">
-                  LINE Official Account
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <motion.details
+              key={faq.q}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="group bg-sand rounded-2xl overflow-hidden"
+            >
+              <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-gray-900 list-none select-none hover:text-ocean transition-colors">
+                {faq.q}
+                <span className="shrink-0 text-ocean text-xl leading-none group-open:rotate-45 transition-transform duration-200">
+                  +
                 </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} AP Bike Center (All Pattaya). All rights reserved.
-          </p>
-          <p className="text-xs text-gray-600 flex items-center gap-1.5">
-            <span>🌴</span>
-            Made with love for Pattaya travellers
-          </p>
+              </summary>
+              <p className="px-5 pb-5 text-gray-600 leading-relaxed text-sm">{faq.a}</p>
+            </motion.details>
+          ))}
         </div>
       </div>
-    </footer>
+    </section>
   );
 }
 
@@ -716,6 +581,7 @@ export default function Home() {
       <BikeGrid onSelectBike={handleSelectBike} />
       <HowItWorks />
       <WhyUs />
+      <FaqSection />
       <LocationSection onBookNow={handleBookNow} />
       <Footer />
 
