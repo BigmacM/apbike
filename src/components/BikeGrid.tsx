@@ -141,22 +141,25 @@ const categoryOrder = ["Easy Riding", "The Explorer", "Powerful Choice"];
 
 const categoryMeta: Record<
   string,
-  { description: string; emoji: string; gradient: string }
+  { description: string; emoji: string; gradient: string; curbColor: string }
 > = {
   "Easy Riding": {
     description: "110–125cc · Perfect for city exploration",
     emoji: "🌴",
     gradient: "from-ocean/10 to-ocean/5",
+    curbColor: "#FFD700", // yellow/white — classic Pattaya curb
   },
   "The Explorer": {
     description: "150–160cc · Longer trips & coastal roads",
     emoji: "🗺️",
     gradient: "from-sunset/10 to-sunset/5",
+    curbColor: "#ff8c42", // orange/white — sunset curb
   },
   "Powerful Choice": {
     description: "300–350cc · Premium maxi-scooter luxury",
     emoji: "👑",
     gradient: "from-palm/10 to-palm/5",
+    curbColor: "#CC1515", // red/white — no-parking curb (powerful)
   },
 };
 
@@ -243,6 +246,7 @@ export default function BikeGrid({ onSelectBike }: BikeGridProps) {
                   <BikeCard
                     key={bike.id}
                     bike={bike}
+                    curbColor={meta.curbColor}
                     onSelect={onSelectBike}
                   />
                 ))}
@@ -279,9 +283,11 @@ export default function BikeGrid({ onSelectBike }: BikeGridProps) {
 
 function BikeCard({
   bike,
+  curbColor,
   onSelect,
 }: {
   bike: Bike;
+  curbColor: string;
   onSelect: (bike: Bike) => void;
 }) {
   return (
@@ -303,7 +309,23 @@ function BikeCard({
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+        {/* Pattaya curb stripe — inspired by the iconic Thai road-kerb markings */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 right-0 h-3"
+          style={{
+            background: `repeating-linear-gradient(
+              90deg,
+              ${curbColor} 0px,
+              ${curbColor} 32px,
+              #ffffff 32px,
+              #ffffff 64px
+            )`,
+            opacity: 0.92,
+          }}
+        />
 
         {/* Badge */}
         {bike.badge && (

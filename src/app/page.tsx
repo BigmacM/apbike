@@ -17,6 +17,7 @@ import BikeGrid, { type Bike } from "@/components/BikeGrid";
 import BookingForm from "@/components/BookingForm";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Gallery from "@/components/Gallery";
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function HeroSection({ onBookNow }: { onBookNow: () => void }) {
@@ -571,6 +572,7 @@ export default function Home() {
       <BikeGrid onSelectBike={handleSelectBike} />
       <HowItWorks />
       <WhyUs />
+      <Gallery />
       <FaqSection />
       <LocationSection onBookNow={handleBookNow} />
       <Footer />
