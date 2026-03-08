@@ -8,7 +8,7 @@ const navLinks = [
   { label: "All Bikes", href: "/bikes" },
   { label: "Why Us", href: "/#why-us" },
   { label: "How It Works", href: "/#how-it-works" },
-  { label: "Location", href: "/#location" },
+  { label: "Traffic Rules", href: "/traffic-rules" },
   { label: "Contact", href: "/contact" },
 ];
 

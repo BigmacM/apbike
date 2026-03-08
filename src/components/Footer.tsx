@@ -29,6 +29,7 @@ export default function Footer() {
                 { href: "/bikes", label: "All Bikes" },
                 { href: "/#how-it-works", label: "How It Works" },
                 { href: "/#why-us", label: "Why Choose Us" },
+                { href: "/traffic-rules", label: "Traffic Rules" },
                 { href: "/#location", label: "Location" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
