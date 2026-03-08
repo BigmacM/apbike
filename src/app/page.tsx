@@ -18,6 +18,7 @@ import BookingForm from "@/components/BookingForm";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
+import MapCard from "@/components/MapCard";
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function HeroSection({ onBookNow }: { onBookNow: () => void }) {
@@ -393,16 +394,7 @@ function LocationSection({ onBookNow }: { onBookNow: () => void }) {
             viewport={{ once: true }}
             className="lg:col-span-3 rounded-3xl overflow-hidden shadow-card min-h-72"
           >
-            <iframe
-              title="AP Bike Center Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.2!2d100.888!3d12.934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102ab5e38d9c4c7%3A0x0!2zMTLCsDU2JzAyLjQiTiAxMDDCsDUzJzE2LjgiRQ!5e0!3m2!1sen!2sth!4v1699000000000"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: "320px" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <MapCard minHeight={320} />
           </motion.div>
 
           <motion.div

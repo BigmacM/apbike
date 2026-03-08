@@ -38,8 +38,19 @@ export default function Navbar({ lightBg = false }: { lightBg?: boolean }) {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-ocean flex items-center justify-center text-white font-display font-black text-sm shadow-glow">
-              AP
+            <div className="w-10 h-10 rounded-xl bg-gradient-ocean flex items-center justify-center shadow-glow shrink-0">
+              {/* Moped / scooter icon */}
+              <svg viewBox="0 0 56 36" width="26" height="17" fill="none" aria-hidden>
+                <circle cx="10" cy="27" r="8" stroke="white" strokeWidth="2.5"/>
+                <circle cx="10" cy="27" r="3" fill="white"/>
+                <circle cx="46" cy="27" r="8" stroke="white" strokeWidth="2.5"/>
+                <circle cx="46" cy="27" r="3" fill="white"/>
+                <path d="M16,22 C18,10 38,9 44,19 L45,24 C38,26 18,25 16,22Z" fill="white"/>
+                <path d="M22,16 Q31,9 40,14 Q34,8 26,10 Z" fill="white" opacity="0.75"/>
+                <line x1="43" y1="18" x2="48" y2="6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="46" y1="6" x2="53" y2="6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="16" y1="22" x2="11" y2="20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
             </div>
             <div className="leading-none">
               <p
