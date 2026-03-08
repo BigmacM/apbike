@@ -294,7 +294,11 @@ function BikeCard({
       <div className="relative h-52 overflow-hidden bg-sand">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={bike.imageUrl}
+          src={`/images/bikes/${bike.id}.jpg`}
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = bike.imageUrl;
+          }}
           alt={bike.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />

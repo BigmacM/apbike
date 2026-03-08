@@ -19,7 +19,7 @@ export default function BikesPage() {
 
   return (
     <main className="min-h-screen font-sans bg-white">
-      <Navbar />
+      <Navbar lightBg />
 
       {/* Page header */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-sand to-white">

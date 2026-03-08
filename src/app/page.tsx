@@ -27,11 +27,16 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <motion.div style={{ y }} className="absolute inset-0 -top-20" aria-hidden>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85')`,
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/hero/hero-bg.jpg"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=85";
           }}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-br from-ocean/20 via-transparent to-sunset/20" />
@@ -141,21 +146,6 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-white/70 text-xs font-medium">Scroll to explore</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-9 rounded-full border-2 border-white/50 flex justify-center pt-1.5"
-        >
-          <div className="w-1 h-2.5 bg-white/80 rounded-full" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

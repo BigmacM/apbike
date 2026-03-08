@@ -12,9 +12,13 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ lightBg = false }: { lightBg?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // On pages with a light/white page header (no dark hero), always show the
+  // dark-text navbar style so links aren't invisible against the background.
+  const isScrolled = scrolled || lightBg;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -25,7 +29,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
+        isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-soft"
           : "bg-transparent"
       }`}
@@ -40,14 +44,14 @@ export default function Navbar() {
             <div className="leading-none">
               <p
                 className={`font-display font-bold text-base transition-colors ${
-                  scrolled ? "text-gray-900" : "text-white"
+                  isScrolled ? "text-gray-900" : "text-white"
                 }`}
               >
                 AP Bike Center
               </p>
               <p
                 className={`text-xs transition-colors ${
-                  scrolled ? "text-ocean" : "text-white/80"
+                  isScrolled ? "text-ocean" : "text-white/80"
                 }`}
               >
                 All Pattaya
@@ -62,7 +66,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-                  scrolled
+                  isScrolled
                     ? "text-gray-600 hover:text-ocean hover:bg-ocean/10"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
@@ -85,7 +89,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
               className={`md:hidden p-2 rounded-xl transition-colors ${
-                scrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/10"
+                isScrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-white/10"
               }`}
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
