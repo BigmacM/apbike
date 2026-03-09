@@ -76,10 +76,20 @@ export default function Footer() {
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} AP Bike Center (All Pattaya). All rights reserved.
           </p>
-          <p className="text-xs text-gray-600 flex items-center gap-1.5">
-            <span>🌴</span>
-            Made with love for Pattaya travellers
-          </p>
+          <a
+            href="https://nikamarketing.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+            aria-label="Website by Nika Marketing"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/nika-logo.png"
+              alt="Nika Marketing"
+              className="h-5 w-auto object-contain brightness-0 invert"
+            />
+          </a>
         </div>
       </div>
     </footer>
