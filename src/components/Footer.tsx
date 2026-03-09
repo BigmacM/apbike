@@ -87,8 +87,9 @@ export default function Footer() {
             <img
               src="/images/nika-logo.png"
               alt="Nika Marketing"
-              className="h-5 w-auto object-contain brightness-0 invert"
+              className="h-8 w-auto object-contain brightness-0 invert"
             />
+            <span className="text-xs text-gray-400">Designed By Nika Marketing</span>
           </a>
         </div>
       </div>
