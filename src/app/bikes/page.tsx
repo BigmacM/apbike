@@ -6,7 +6,7 @@ import { Shield, Star, AlertTriangle, Info, CheckCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BikeGrid, { type Bike } from "@/components/BikeGrid";
-import BookingForm from "@/components/BookingForm";
+import PriceCalculator from "@/components/PriceCalculator";
 
 // ─── What's Included ──────────────────────────────────────────────────────────
 function WhatsIncluded() {
@@ -342,7 +342,7 @@ export default function BikesPage() {
 
       <Footer />
 
-      <BookingForm
+      <PriceCalculator
         bike={selectedBike}
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
@@ -358,8 +358,8 @@ export default function BikesPage() {
           onClick={() => { setSelectedBike(null); setBookingOpen(true); }}
           className="bg-gradient-sunset text-white font-bold px-5 py-3.5 rounded-2xl shadow-lg flex items-center gap-2 text-sm active:scale-95 transition-transform"
         >
-          <span>🏍️</span>
-          Book Now
+          <span>🧮</span>
+          Check Prices
         </button>
       </motion.div>
     </main>

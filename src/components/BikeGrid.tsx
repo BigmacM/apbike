@@ -388,7 +388,7 @@ function BikeCard({
           onClick={() => onSelect(bike)}
           className="mt-5 w-full bg-gradient-ocean text-white font-semibold py-3 px-6 rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 group/btn"
         >
-          <span>Book This Bike</span>
+          <span>Calculate Price</span>
           <span className="group-hover/btn:translate-x-1 transition-transform duration-200">
             →
           </span>

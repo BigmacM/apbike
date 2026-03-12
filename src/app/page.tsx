@@ -14,7 +14,7 @@ import {
   Sun,
 } from "lucide-react";
 import BikeGrid, { type Bike } from "@/components/BikeGrid";
-import BookingForm from "@/components/BookingForm";
+import PriceCalculator from "@/components/PriceCalculator";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
@@ -109,7 +109,7 @@ function HeroSection({ onBookNow }: { onBookNow: () => void }) {
               className="inline-flex items-center justify-center gap-2.5 bg-gradient-sunset text-white font-bold text-lg px-8 py-4 rounded-2xl hover:opacity-90 active:scale-[0.97] transition-all shadow-lg"
             >
               <span>🏍️</span>
-              Book Your Ride Now
+              Check Prices &amp; Book
             </button>
             <a
               href="/bikes"
@@ -217,14 +217,14 @@ function HowItWorks() {
       desc: "Browse our fleet and pick the perfect scooter or maxi-scooter for your trip.",
     },
     {
-      emoji: "📝",
-      title: "Fill the Form",
-      desc: "Select your dates, add-ons, and send your booking request in under 2 minutes.",
+      emoji: "🧮",
+      title: "Calculate Your Price",
+      desc: "Pick your dates and add-ons in the price calculator to get an instant estimate.",
     },
     {
       emoji: "💬",
-      title: "We Confirm via LINE",
-      desc: "Our team confirms your booking directly on LINE — fast and personal.",
+      title: "Contact Us on LINE",
+      desc: "Message us on LINE or visit the shop — we confirm your reservation fast.",
     },
     {
       emoji: "🌴",
@@ -438,7 +438,7 @@ function LocationSection({ onBookNow }: { onBookNow: () => void }) {
               className="w-full bg-gradient-ocean text-white font-bold py-4 px-6 rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-auto"
             >
               <span>🏍️</span>
-              Book Your Ride Now
+              Check Prices &amp; Book
             </button>
           </motion.div>
         </div>
@@ -490,7 +490,7 @@ function FaqSection() {
     },
     {
       q: "How do I confirm my booking?",
-      a: "Fill in the booking form on our website and we will confirm via LINE. The whole process takes under 5 minutes.",
+      a: "Use the price calculator to check your dates and estimate the cost, then contact us on LINE or visit the shop. We confirm reservations fast — usually within minutes.",
     },
   ];
 
@@ -564,7 +564,7 @@ export default function Home() {
       <LocationSection onBookNow={handleBookNow} />
       <Footer />
 
-      <BookingForm
+      <PriceCalculator
         bike={selectedBike}
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
@@ -581,8 +581,8 @@ export default function Home() {
           onClick={handleBookNow}
           className="bg-gradient-sunset text-white font-bold px-5 py-3.5 rounded-2xl shadow-lg flex items-center gap-2 text-sm active:scale-95 transition-transform"
         >
-          <span>🏍️</span>
-          Book Now
+          <span>🧮</span>
+          Check Prices
         </button>
       </motion.div>
     </main>
