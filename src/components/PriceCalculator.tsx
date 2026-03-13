@@ -8,7 +8,6 @@ import {
   Clock,
   MessageCircle,
   MapPin,
-  Check,
   Crown,
   FileText,
 } from "lucide-react";
